@@ -1,3 +1,48 @@
-p {
-    color: purple;
+
+#container{
+    display: flex;
+    flex-direction: column;
+    margin: 15% 25%;
+    width: 500px;
+    height: 500px;
+    flex: 1;
+    border: 5px solid black
+}
+
+#display{
+    height: 122px;
+    background-color: white;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+#display #text{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 40px;
+    text-align: right;
+    margin-right: 8px;
+    margin-bottom: 0;
+}
+
+#buttons{
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+#buttons > button {
+    background-color: rgb(206, 203, 203);
+    font-size: 23px;
+    width: 125px;
+    height: 75px;
+    border: 2px solid black;
+}
+
+#buttons #clear{
+    width: 500px;
+}
+
+#buttons #equals{
+    width: 250px;
 }
