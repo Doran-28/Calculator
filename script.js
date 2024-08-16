@@ -3,7 +3,11 @@
 let varA;
 let varB;
 let operator;
+let expression = []
+let total = 0
 
+const clearBtn = document.querySelector("#buttons #clear");
+const equalsBtn = document.querySelector("#buttons #equals");
 const display = document.querySelector("#display #text");
 let displayText = display.textContent
 
@@ -27,13 +31,13 @@ const buttons = Array.from(document.querySelectorAll('#buttons > button')).filte
 
 buttons.forEach(element => {
     element.addEventListener("click", () => {
-        displayText += element.textContent
-        display.textContent = displayText
+        if (isNaN(element.textContent))
+            displayText += ' ' + element.textContent + ' ';
+        else
+            displayText += element.textContent;
+        display.textContent = displayText;
     });
 });
-
-const clearBtn = document.querySelector("#buttons #clear");
-const equalsBtn = document.querySelector("#buttons #equals");
 
 clearBtn.addEventListener("click", () => {
     displayText = ""
@@ -41,6 +45,18 @@ clearBtn.addEventListener("click", () => {
 });
 
 equalsBtn.addEventListener("click", () => {
-    displayText = ""
+    vals = displayText.trim().split(' ')
+    if (vals.length !== 3) {
+        display.textContent = "Syntax ERROR"
+        displayText = ""
+        return
+    }
+    if (!(!isNaN(vals[0]) && isNaN(vals[1]) && !isNaN(vals[2]))){
+        display.textContent = "Syntax ERROR"
+        displayText = ""
+        return
+    }
+    let equals = operate(Number(vals[0]), Number(vals[2]), vals[1])
+    displayText = equals
     display.textContent = displayText
 });
